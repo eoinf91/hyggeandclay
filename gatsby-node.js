@@ -22,6 +22,17 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
+      products: allStripePrice {
+        edges {
+          node {
+            product {
+              metadata {
+                slug
+              }
+            }
+          }
+        }
+      }
     }
   `).then((result) => {
     if (result.errors) {
@@ -43,6 +54,15 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           id,
         },
+      })
+    })
+
+    result.data.products.edges.forEach(edge => {
+      const slug = `products/${edge.node.product.metadata.slug}`
+      actions.createPage({
+        path: slug,
+        component: require.resolve(`./src/templates/product-item.js`),
+        context: {slug: edge.node.product.metadata.slug},
       })
     })
 

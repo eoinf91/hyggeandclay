@@ -1,0 +1,135 @@
+@import "../all.scss";
+
+nav {
+    background: $green;
+    padding: 0px;
+    position: fixed;
+    width: 100vw;
+    z-index: 100000;
+
+    .logo {
+        padding: 10px;
+
+        @media (min-width: $tablet) {
+            width: calc(100% / 3);
+            padding: 0;
+        }
+    }
+
+    img {
+        height: 70px;
+        display: block;
+        margin: auto;
+
+        @media (min-width: $tablet) {
+            height: 90px;
+        }
+    }
+
+    .navbar-burger {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: scale(1.2) translateY(-50%);
+
+        @media (min-width: $tablet) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+        }
+
+        span {
+            color: $beige;
+        }
+    }
+
+    .account {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        text-align: right;
+
+        img {
+            height: 20px;
+            vertical-align: center;
+
+            @media (min-width: $tablet) {
+                height: 30px;
+            }
+        }
+
+        @media (min-width: $tablet) {
+            position: relative;
+            transform: none;
+            right: auto;
+            top: auto;
+            width: calc(100% / 3);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        a {
+            display: inline-block;
+            margin: 0 0 0 20px;
+        }
+    }
+
+    #navMenu {
+        width: 100vw;
+        position: absolute;
+        top: 120px;
+        background: $green;
+        padding: 20px;
+        z-index: 100000;
+        box-shadow: none;
+        border-top: 1px solid $beige;
+
+        @media (min-width: $tablet) {
+            width: calc(100% / 3);
+            position: relative;
+            top: auto;
+            padding: 0;
+            border-top: none;
+        }
+
+        .navbar-start {
+            
+            @media (min-width: $tablet) {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 450px;
+            }
+        }
+    }
+
+    a {
+        display: block;
+        margin: 0 0 10px;
+        font-weight: 700;
+        color: $beige;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: $paraMob;
+
+        @media (min-width: $tablet) {
+            margin: 0;
+            color: $blue;
+            font-size: $paraDtp;
+        }
+    }
+
+    .container {
+        
+        @media (min-width: $tablet) {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100vw !important;
+            padding: 20px;
+            align-items: center;
+        }
+    }
+}

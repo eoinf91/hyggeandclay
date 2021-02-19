@@ -1,0 +1,194 @@
+@import '../components/all.scss';
+
+.shop-grid {
+    padding: 200px 50px 20px;
+
+    @media (min-width: $tablet) {
+        display: grid;
+        grid-template-columns: 20% 75%;
+        column-gap: 50px;
+        grid-template-areas: "sidebar main";
+        padding: 250px 20px 20px;
+        min-height: 90vh;
+    }
+
+    @media (min-width: $desktop) {
+        padding: 250px 50px 20px;
+    }
+
+    .grid-products {
+        grid-area: main;
+
+        .four-cols {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 50px;
+
+            .product-window {
+                margin: 0 0 30px;
+            }
+        }
+    }
+
+    .grid-filters {
+        grid-area: sidebar;
+        display: none;
+        
+        @media (min-width: $tablet) {
+            position: sticky;
+            top: 220px;
+            align-self: start;
+            display: block;
+            max-width: 200px;
+        }
+
+        .colors {
+
+            @media (min-width: $tablet) {
+                width: 100px;
+            }
+            
+            @media (min-width: $desktop) {
+                width: 200px;
+            }
+        }
+
+        .filter-option {
+            margin: 10px 0;
+            position: relative;
+
+            label {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                transition: all 0.5s ease;
+                border: 2px solid $white;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 0 10px 2px rgba(214,221,216,0.75);
+                }
+            }
+
+            .vis-hidden {
+                position: absolute;
+                background: red;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                z-index: 100;
+                cursor: pointer;
+
+                &:checked + label {
+                    box-shadow: 0 0 10px 2px rgba(214,221,216,0.75);
+                    border: 1px solid $green;
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                }
+            }
+
+            .color {
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+
+                &.color-white {
+                    border: 1px solid $green;
+                }
+
+                &.color-blue {
+                    background: $blue;
+                }
+
+                &.color-copper {
+                    background: $orange;
+                }
+
+                &.color-green {
+                    background: $green;
+                }
+            }
+        }
+    }
+
+    .style-filters {
+        margin: 30px 0;
+
+        .style-options {
+            display: flex;
+            justify-content: space-between;
+
+            .vis-hidden {
+                position: absolute;
+                background: red;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                z-index: 100;
+
+                &:checked + label {
+                    background: $blue;
+                    box-shadow: 0 0 10px 2px rgba(214,221,216,0.75);
+                    border: 2px solid $green;
+                }
+            }
+
+            label {
+                width: 60px;
+                height: 60px;
+                border-radius: 10px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transition: all 0.5s ease;
+                border: 2px solid $blue;
+                cursor: pointer;
+                
+                &:hover {
+                    box-shadow: 0 0 10px 2px rgba(214,221,216,0.75);
+                }
+            }
+            
+            .style {
+                width: 60px;
+                text-align: center;
+
+                p {
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                .style-icon {
+                    background: $blue;
+                    border-radius: 10px;
+                    width: 60px;
+                    height: 60px;
+                    position: relative;
+
+                    img {
+                        height: 50px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                    }
+
+                    &.stud {
+
+                        img {
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

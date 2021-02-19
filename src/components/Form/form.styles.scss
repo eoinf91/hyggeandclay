@@ -1,0 +1,65 @@
+@import '../all.scss';
+
+.form-container {
+    max-width: 800px;
+    margin: 30px auto 80px;
+    position: relative;
+    z-index: 1000;
+    padding: 0 20px;
+
+    @media ( min-width: $tablet ) {
+        padding: 0;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    form {
+        margin-top: 20px;
+
+        input, textarea {
+            border-radius: 0;
+            border: 1px solid $green;
+            background: transparent;
+
+            &:hover {
+                border: 1px solid $green;
+            }
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        label {
+            font-weight: 400;
+            color: $green;
+        }
+    }
+
+    .field {
+        margin: 0 0 20px;
+
+        .cta {
+            display: block;
+            margin: auto;
+            border: none;
+        }
+    }
+
+    .field-container {
+
+        @media ( min-width: $tablet ) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .field {
+
+            @media ( min-width: $tablet ) {
+                width: calc(100% / 2 - 10px);
+            }
+        }
+    }
+}

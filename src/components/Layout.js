@@ -1,18 +1,27 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.sass'
+import Footer from '../components/Footer/Footer'
+import Navbar from '../components/Navbar/Navbar'
+import './all.scss'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import './font-face.css'
 
-const TemplateWrapper = ({ children }) => {
+import { loadStripe } from '@stripe/stripe-js'
+import { CartProvider } from 'use-shopping-cart'
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
+
+const TemplateWrapper = ({ children, pageTitle }) => {
   const { title, description } = useSiteMetadata()
   return (
     <div>
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
+        {pageTitle
+          ? <title>{pageTitle} | {title}</title>
+          : <title>{title}</title>
+        }
         <meta name="description" content={description} />
 
         <link
@@ -48,9 +57,19 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
+      <CartProvider
+        mode="client-only"
+        stripe={stripePromise}
+        successUrl={`${window.location.origin}/shop/thank-you`}
+        cancelUrl={`${window.location.origin}/`}
+        currency="EUR"
+        allowedCountries={['IE']}
+        billingAddressCollection={true}
+      >
+        <Navbar />
+        <div>{children}</div>
+        <Footer />
+      </CartProvider>
     </div>
   )
 }

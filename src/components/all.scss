@@ -1,0 +1,176 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma";
+
+// Variables
+// Colours
+$green: #557571;
+$blue: #d6ddd8;
+$pink: #d49a89;
+$beige: #f7d1ba;
+$orange: #ce7d5d;
+$white: #fff;
+
+// Breakpoints
+$mobile: 640px;
+$tablet: 768px;
+$desktop: 1200px;
+$xlDesktop: 1920px;
+
+// Text Sizes
+$paraMob: 12px;
+$paraMobLarge: 16px;
+$paraDtp: 16px;
+$paraDtpLarge: 20px;
+$h1Mob: 32px;
+$h1Dtp: 70px;
+$h2Mob: 26px;
+$h2Dtp: 46px;
+$h3Mob: 22px;
+$h3Dtp: 40px;
+$h4Mob: 14px;
+$h4Dtp: 18px;
+
+// Text Colours
+.text-green { color: $green; }
+.text-orange { color: $orange; }
+.text-blue { color: $blue; }
+.text-beige { color: $beige; }
+.text-pink { color: $pink; }
+.text-white { color: $white; }
+
+* {
+    font-family: Gilroy, museo-sans, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer;
+}
+
+h1 {
+    color: $green;
+    font-size: $h1Mob;
+    font-weight: 300;
+    letter-spacing: 2px;
+
+    @media (min-width: $desktop) {
+        font-size: $h1Dtp;
+    }
+}
+
+h2 {
+    color: $green;
+    font-size: $h2Mob;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    @media (min-width: $desktop) {
+        font-size: $h2Dtp;
+    }
+}
+
+h3 {
+    color: $green;
+    font-size: $h3Mob;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+
+    @media (min-width: $desktop) {
+        font-size: $h3Dtp;
+    }
+}
+
+h4 {
+    color: $green;
+    font-size: $h4Mob;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 500;
+
+    @media (min-width: $desktop) {
+        font-size: $h4Dtp;
+    }
+}
+
+p {
+    font-size: $paraMob;
+    letter-spacing: 1px;
+    line-height: 1.4em;
+
+    @media (min-width: $desktop) {
+        font-size: $paraDtp;
+    }
+}
+
+.cta {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: $orange;
+    color: $blue;
+    border-radius: 100px;
+    font-size: $paraMob;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    @media (min-width: $desktop) {
+        font-size: $paraDtp;
+    }
+}
+
+.heavy {
+    font-weight: 700;
+}
+
+.page-content {
+    padding: 20px;
+    text-align: center;
+    max-width: 1500px;
+    margin: 30px auto;
+
+    h2 {
+        font-weight: 300;
+    }
+}
+
+.contact-page {
+    position: relative;
+
+    label {
+        text-align: left;
+    }
+
+    svg {
+        display: none;
+
+        .st0 {
+            fill: $pink;
+        }
+
+        @media (min-width: $desktop) {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: -20px;
+            width: 170px;
+            transform: rotate(10deg);
+        }
+
+        &.opposite {
+
+            @media (min-width: $desktop) {
+                top: auto;
+                left: auto;
+                bottom: 50px;
+                right: -20px;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

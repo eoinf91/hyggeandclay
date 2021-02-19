@@ -1,0 +1,134 @@
+@import '../all.scss';
+
+.account {
+    position: relative;
+
+    .nav-item {
+        display: block;
+        margin: 0 0 10px;
+        font-weight: 700;
+        color: $beige;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: $paraMob;
+        cursor: pointer;
+
+        @media (min-width: $tablet) {
+            margin: 0;
+            color: $blue;
+            font-size: $paraDtp;
+        }
+    }
+}
+
+.cart-box {
+    position: fixed;
+    top: 0px;
+    right: -350px;
+    width: 350px;
+    min-height: 100vh;
+    background: $blue;
+    z-index: 10000;
+    display: none;
+    padding: 20px;
+    border-left: 1px solid $pink;
+    animation: slideOut 1s forwards ease;
+
+    &.is-active {
+        display: block;
+        animation: slideIn 1s forwards ease;
+    }
+
+    h4 {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .btn {
+        cursor: pointer;
+    }
+}
+
+.cart-buttons {
+    position: absolute;
+    bottom: 20px;
+    width: 280px;
+    margin: auto;
+
+    img {
+        margin-top: 30px;
+    }
+
+    .button {
+        margin: 0 0 5px;
+    }
+}
+
+.cart-item {
+    text-align: left;
+    width: 280px;
+    border-bottom: 1px solid $green;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .item-image {
+        width: 100px;
+        height: 100px;
+        background: $green;
+    }
+
+    .quantity {
+        margin-top: 20px;
+        width: 90px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            border-radius: 100%;
+            color: $orange;
+            border: 1px solid $orange;
+            width: 25px;
+            height: 25px;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        p {
+            color: $orange;
+        }
+    }
+
+    .item-details {
+        width: 150px;
+
+        p {
+
+            &:nth-of-type(even) {
+                text-align: left;
+                color: $orange;
+            }
+        }
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        right: -350px;
+    }
+
+    100% {
+        right: 0;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -350px;
+    }
+}

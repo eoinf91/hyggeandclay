@@ -1,0 +1,21 @@
+@import '../all.scss';
+
+.four-cols-container {
+    padding: 20px;
+    background: $blue;
+    text-align: center;
+
+    .four-cols {
+        margin: 50px auto;
+
+        @media (min-width: $tablet) {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: $desktop) {
+            width: 80%;
+        }
+    }
+}

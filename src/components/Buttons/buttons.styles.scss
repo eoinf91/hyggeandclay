@@ -1,0 +1,14 @@
+@import '../all.scss';
+
+.checkout-buttons {
+    border: none;
+    width: 100%;
+    display: block;
+    margin: 5px 0;
+
+    &.hollow {
+        border: 1px solid $orange;
+        color: $orange;
+        background: transparent;
+    }
+}

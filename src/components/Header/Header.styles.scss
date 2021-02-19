@@ -1,0 +1,70 @@
+@import '../all.scss';
+
+.header {
+    background: $white;
+    width: 100vw;
+    height: 80vh;
+    max-height: 1000px;
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+
+    .header-image {
+        width: 100%;
+        height: 100%;
+        background: $beige;
+
+        @media (min-width: $desktop) {
+            width: 480px;
+            height: calc(90% - 150px);
+            position: absolute;
+            bottom: 0;
+            left: 27%;
+            border-radius: 600px 600px 0 0;
+        }
+    }
+
+    .header-content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 100%;
+        padding: 0 20px;
+
+        @media (min-width: $desktop) {
+            right: 20px;
+            width: 500px;
+            left: auto;
+            top: 50%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    }
+
+    p {
+        font-size: $paraMobLarge;
+
+        @media (min-width: $desktop) {
+            font-size: $paraDtpLarge;
+        }
+    }
+
+    .circle {
+        position: absolute;
+        width: 180px;
+        right: -90px;
+        bottom: 30px;
+
+        .st0 {
+            fill: $blue;
+        }
+
+        .st1 {
+            fill: $green;
+        }
+    }
+}

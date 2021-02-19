@@ -1,0 +1,40 @@
+@import '../all.scss';
+
+.contact-block {
+    padding: 20px;
+    background: $blue;
+    position: relative;
+    overflow: hidden;
+    
+    h2 {
+        text-align: center;
+    }
+
+    svg {
+        display: none;
+
+        .st0 {
+            fill: $pink;
+        }
+
+        @media (min-width: $desktop) {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: -20px;
+            width: 170px;
+            transform: rotate(10deg);
+        }
+
+        &.opposite {
+
+            @media (min-width: $desktop) {
+                top: auto;
+                left: auto;
+                bottom: 50px;
+                right: -20px;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
