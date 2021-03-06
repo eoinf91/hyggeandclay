@@ -10,28 +10,38 @@ import ContactBlock from '../components/ContactBlock/ContactBlock'
 
 export const IndexPageTemplate = ({
   image,
+  productsTitle,
+  subtitle,
   title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro,
+  theData,
+  aboutTitle,
+  aboutContent,
 }) => (
   <div>
-    
+    <Header
+      headerTitle={title}
+      headerCopy={subtitle}
+      productImage={image.publicURL}
+    />
+    <FourCols
+      productsTitle={productsTitle}
+      productData={theData}
+    />
+    <TwoColImage
+      twoColHeader={aboutTitle}
+      twoColCopy={aboutContent}
+    />
+    <ContactBlock />
   </div>
 )
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
+  subtitle: PropTypes.string,
+  productsTitle: PropTypes.string,
+  aboutTitle: PropTypes.string,
+  aboutContent: PropTypes.string,
 }
 
 const IndexPage = ({ data }) => {
@@ -40,26 +50,14 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        image={frontmatter.pageHead.image}
+        title={frontmatter.pageHead.title}
+        theData={data.productQuery}
+        subtitle={frontmatter.pageHead.subTitle}
+        productsTitle={frontmatter.products.productsTitle}
+        aboutTitle={frontmatter.about.aboutTitle}
+        aboutContent={frontmatter.about.aboutContent}
       />
-      <Header
-        headerTitle="Home"
-        headerCopy="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"
-      />
-      <FourCols
-        productData={data.productQuery}
-      />
-      <TwoColImage
-        twoColHeader="Hey there,"
-        twoColCopy="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores"
-      />
-      <ContactBlock />
     </Layout>
   )
 }
@@ -81,34 +79,19 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        heading
-        subheading
-        mainpitch {
+        pageHead {
           title
-          description
+          subTitle
+          image {
+            publicURL
+          } 
         }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-          heading
-          description
+        products {
+          productsTitle
+        }
+        about {
+          aboutTitle
+          aboutContent
         }
       }
     }

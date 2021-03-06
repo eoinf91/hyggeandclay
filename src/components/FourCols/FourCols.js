@@ -5,12 +5,12 @@ import ProductWindow from '../ProductWindow/ProductWindow'
 
 import './FourCols.styles.scss'
 
-const FourCols = ({ productData }) => {
+const FourCols = ({ productData, productsTitle }) => {
     const { edges: products } = productData
 
     return (
         <div className="four-cols-container">
-            <h2>Latest Products</h2>
+            <h2>{productsTitle}</h2>
             <div className="four-cols">
             {products.map(({ node: price }) => {
                 const newSku = {
