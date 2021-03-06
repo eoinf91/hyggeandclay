@@ -14,6 +14,7 @@ const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
 const TemplateWrapper = ({ children, pageTitle }) => {
   const { title, description } = useSiteMetadata()
+  const PageUrl = typeof window !== 'undefined' ? window.location.origin : ''
   return (
     <div>
       <Helmet>
@@ -60,8 +61,8 @@ const TemplateWrapper = ({ children, pageTitle }) => {
       <CartProvider
         mode="client-only"
         stripe={stripePromise}
-        successUrl={`${window.location.origin}/shop/thank-you`}
-        cancelUrl={`${window.location.origin}/`}
+        successUrl={`${PageUrl}/shop/thank-you`}
+        cancelUrl={`${PageUrl}/`}
         currency="EUR"
         allowedCountries={['IE']}
         billingAddressCollection={true}
