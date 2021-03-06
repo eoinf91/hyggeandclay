@@ -5,6 +5,10 @@ import Layout from '../components/Layout'
 
 import './shop.styles.scss'
 
+export const ShopPageTemplate = () => (
+  <div></div>
+)
+
 const ShopPage = props => {
   const { data } = props
 
