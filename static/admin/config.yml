@@ -35,9 +35,9 @@ collections:
         name: "index"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: "Page Head", name: pageHead, widget: object, fields: [{label: "Title", name: title, widget: string}, {label: "Subtitle", name: subTitle, widget: text}, {label: "Arch Image", name: image, widget: image}]}
-          - {label: "Products", name: products, widget: object, fields: [{label: "Products Title", name: productsTitle, widget: text}]}
-          - {label: "About", name: about, widget: object, fields: [{label: "Title", name: aboutTitle, widget: text}, {label: "Content", name: aboutContent, widget: text}]}
+          - {label: "Page Head", name: "pageHead", widget: "object", fields: [{label: "Title", name: "title", widget: "string"}, {label: "Subtitle", name: "subTitle", widget: "text"}, {label: "Arch Image", name: "image", widget: "image"}]}
+          - {label: "Products", name: "products", widget: "object", fields: [{label: "Products Title", name: "productsTitle", widget: "text"}]}
+          - {label: "About", name: "about", widget: "object", fields: [{label: "Title", name: "aboutTitle", widget: "text"}, {label: "Content", name: "aboutContent", widget: "text"}]}
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

@@ -34,10 +34,11 @@
         padding: 0 20px;
 
         @media (min-width: $desktop) {
-            right: 20px;
-            width: 500px;
+            right: -140px;
+            width: 650px;
             left: auto;
             top: 50%;
+            padding: 0;
         }
 
         h1 {
