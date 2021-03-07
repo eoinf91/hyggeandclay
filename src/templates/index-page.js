@@ -16,47 +16,54 @@ export const IndexPageTemplate = ({
   theData,
   aboutTitle,
   aboutContent,
-}) => (
-  <div>
-    <Header
-      headerTitle={title}
-      headerCopy={subtitle}
-      productImage={image.publicURL}
-    />
-    <FourCols
-      productsTitle={productsTitle}
-      productData={theData}
-    />
-    <TwoColImage
-      twoColHeader={aboutTitle}
-      twoColCopy={aboutContent}
-    />
-    <ContactBlock />
-  </div>
-)
+}) => {
+  return (
+    <div>
+      <Header
+        headerTitle={title}
+        headerCopy={subtitle}
+        productImage={image.publicURL}
+      />
+      <FourCols
+        productsTitle={productsTitle}
+        productData={theData}
+      />
+      <TwoColImage
+        twoColHeader={aboutTitle}
+        twoColCopy={aboutContent}
+      />
+      <ContactBlock />
+    </div>
+  )
+}
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  productsTitle: PropTypes.string,
-  aboutTitle: PropTypes.string,
-  aboutContent: PropTypes.string,
+  pageHead: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  }),
+  products: PropTypes.shape({
+    productsTitle: PropTypes.string,
+  }),
+  about: PropTypes.shape({
+    aboutTitle: PropTypes.string.isRequired,
+    aboutContent: PropTypes.string.isRequired,
+  }),
 }
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.pageHead.image}
-        title={frontmatter.pageHead.title}
+        image={data.frontmatter.pageHead.image}
+        title={data.frontmatter.pageHead.title}
         theData={data.productQuery}
-        subtitle={frontmatter.pageHead.subTitle}
-        productsTitle={frontmatter.products.productsTitle}
-        aboutTitle={frontmatter.about.aboutTitle}
-        aboutContent={frontmatter.about.aboutContent}
+        subtitle={data.frontmatter.pageHead.subTitle}
+        productsTitle={data.frontmatter.products.productsTitle}
+        aboutTitle={data.frontmatter.about.aboutTitle}
+        aboutContent={data.frontmatter.about.aboutContent}
       />
     </Layout>
   )
