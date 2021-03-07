@@ -57,13 +57,13 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={data.frontmatter.pageHead.image}
-        title={data.frontmatter.pageHead.title}
+        image={data.markdownRemark.frontmatter.pageHead.image}
+        title={data.markdownRemark.frontmatter.pageHead.title}
         theData={data.productQuery}
-        subtitle={data.frontmatter.pageHead.subTitle}
-        productsTitle={data.frontmatter.products.productsTitle}
-        aboutTitle={data.frontmatter.about.aboutTitle}
-        aboutContent={data.frontmatter.about.aboutContent}
+        subtitle={data.markdownRemark.frontmatter.pageHead.subTitle}
+        productsTitle={data.markdownRemark.frontmatter.products.productsTitle}
+        aboutTitle={data.markdownRemark.frontmatter.about.aboutTitle}
+        aboutContent={data.markdownRemark.frontmatter.about.aboutContent}
       />
     </Layout>
   )

@@ -7,18 +7,28 @@ import Header from '../components/Header/Header'
 import TwoColImage from '../components/TwoColImage/TwoColImage'
 import ContactBlock from '../components/ContactBlock/ContactBlock'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const AboutPageTemplate = ({ 
+  title,
+  subtitle,
+  headImage,
+  introHead,
+  introCopy,
+  profileImage,
+  profileText,
+  contentComponent,
+  content
+}) => {
   const PageContent = contentComponent || Content
 
   return (
     <div className="about-page">
       <Header
-        headerTitle="About Us"
-        headerCopy="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"
+        headerTitle={title}
+        headerCopy={subtitle}
       />
       <PageContent className="page-content" content={content} />
       <TwoColImage
-        twoColCopy="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores"
+        twoColCopy={profileText}
       />
       <ContactBlock />
     </div>
@@ -26,39 +36,67 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
 }
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  pageHead: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subTitle: PropTypes.string.isRequired,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  }),
+  pageIntro: PropTypes.shape({
+    introHead: PropTypes.string.isRequired,
+    introCopy: PropTypes.string.isRequired,
+  }),
+  profile: PropTypes.shape({
+    profileImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  }),
   contentComponent: PropTypes.func,
 }
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
 
   return (
     <Layout
-      pageTitle={post.frontmatter.title}
+      pageTitle={data.markdownRemark.frontmatter.pageHead.title}
     >
       <AboutPageTemplate
         contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
+        content={data.markdownRemark.html}
+        title={data.markdownRemark.frontmatter.pageHead.title}
+        subtitle={data.markdownRemark.frontmatter.pageHead.subTitle}
+        headImage={data.markdownRemark.frontmatter.pageHead.headImage}
+        introHead={data.markdownRemark.frontmatter.pageIntro.introHead}
+        introCopy={data.markdownRemark.frontmatter.pageIntro.introCopy}
+        profileImage={data.markdownRemark.frontmatter.profile.profileImage}
+        profileText={data.markdownRemark.frontmatter.profile.profileText}
       />
     </Layout>
   )
 }
 
 AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.object,
+  }),
 }
 
 export default AboutPage
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
+  query AboutPageTemplate($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
+        pageHead {
+          title
+          subTitle
+        }
+        pageIntro {
+          introHead
+          introCopy
+        }
+        profile {
+          profileImage
+          profileText
+        }
       }
     }
   }
