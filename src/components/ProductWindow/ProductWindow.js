@@ -7,7 +7,7 @@ import ProductImage from "../../img/header_arch_img.jpg"
 
 import './ProductWindow.styles.scss'
 
-const ProductWindow = ({ sku, slug }) => {
+const ProductWindow = ({ sku, slug, productImage }) => {
 
   return (
     <div className="product-window">
@@ -15,7 +15,7 @@ const ProductWindow = ({ sku, slug }) => {
         <div
           className="product-image"
           style={{
-            'background': `url(${ProductImage})`,
+            'backgroundImage': `url(${productImage})`,
             'backgroundSize': 'cover',
             'backgroundPosition': 'center'
           }}
@@ -23,7 +23,7 @@ const ProductWindow = ({ sku, slug }) => {
         <div className="product-info">
           <p className="text-orange">{sku.name}</p>
           <p className="heavy text-orange">
-            Price:{' '}
+            {' '}
             {formatCurrencyString({
               value: parseInt(sku.price),
               currency: sku.currency,

@@ -16,6 +16,7 @@ export const ProductItemTemplate = ({
   priceId,
   productImage,
   productData,
+  description,
 }) => {
   const { addItem } = useShoppingCart()
 
@@ -59,7 +60,7 @@ export const ProductItemTemplate = ({
                 })}
               </h4>
             </div>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores</p>
+            <p>{description}</p>
             <button 
               className="cta"
               onClick={() => addItem(newSku)}
@@ -97,7 +98,7 @@ const ProductItem = ({ data }) => {
         currency={post.currency}
         productImage={post.product.images[0]}
         contentComponent={HTMLContent}
-        description="description"
+        description={post.product.description}
         productData={data.productQuery}
         // helmet={
         //   <Helmet titleTemplate="%s | Hygge &amp; Clay">
@@ -134,6 +135,7 @@ export const pageQuery = graphql`
       currency
       product {
         name
+        description
         metadata {
           slug
         }
@@ -145,6 +147,7 @@ export const pageQuery = graphql`
         node {
           product {
             name
+            images
             metadata {
               slug
             }

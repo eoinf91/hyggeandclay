@@ -4,6 +4,9 @@ import ProductWindow from '../ProductWindow/ProductWindow'
 import Stud from '../../img/stud.svg'
 import Hoop from '../../img/hoop.svg'
 import Arch from '../../img/arch.svg'
+import SemiCircle from '../../img/semi-circle.svg'
+import Trapezoid from '../../img/trapezoid.svg'
+import Chandelier from '../../img/chandelier.svg'
 
 class Search extends React.Component {
   constructor(props) {
@@ -29,7 +32,7 @@ class Search extends React.Component {
           id: 14,
           name: "Blue",
           value: "blue",
-        }
+        },
       ],
       activeFilter: []
     };
@@ -127,6 +130,32 @@ class Search extends React.Component {
                     <div className="color-green color" />
                   </label>
                 </div>
+                <div className="filter-option">
+                  <input
+                    id="beige"
+                    className="vis-hidden"
+                    type="checkbox"
+                    checked={activeFilter.includes("beige")}
+                    onClick={() => this.onFilterChange("beige")}
+                  />
+                  <label htmlFor="beige">
+                    <p className="text-green">Beige</p>
+                    <div className="color-beige color" />
+                  </label>
+                </div>
+                <div className="filter-option">
+                  <input
+                    id="yellow"
+                    className="vis-hidden"
+                    type="checkbox"
+                    checked={activeFilter.includes("yellow")}
+                    onClick={() => this.onFilterChange("yellow")}
+                  />
+                  <label htmlFor="yellow">
+                    <p className="text-green">Yellow</p>
+                    <div className="color-yellow color" />
+                  </label>
+                </div>
                 </div>
             </div>
             <div className="style-filters">
@@ -177,12 +206,57 @@ class Search extends React.Component {
                         </div>
                         <p className="text-green">Hoop</p>
                     </div>
+                    <div className="style">
+                        <div className="style-icon chandelier">
+                            <input
+                                id="chandelier"
+                                className="vis-hidden"
+                                type="checkbox"
+                                checked={activeFilter.includes("chandelier")}
+                                onClick={() => this.onFilterChange("chandelier")}
+                            />
+                            <label htmlFor="chandelier">
+                                <img src={Chandelier} alt="Chandelier" />
+                            </label>
+                        </div>
+                        <p className="text-green">Chandelier</p>
+                    </div>
+                    <div className="style">
+                        <div className="style-icon trapezoid">
+                            <input
+                                id="trapezoid"
+                                className="vis-hidden"
+                                type="checkbox"
+                                checked={activeFilter.includes("trapezoid")}
+                                onClick={() => this.onFilterChange("trapezoid")}
+                            />
+                            <label htmlFor="trapezoid">
+                                <img src={Trapezoid} alt="Trapezoid" />
+                            </label>
+                        </div>
+                        <p className="text-green">Trapezoid</p>
+                    </div>
+                    <div className="style">
+                        <div className="style-icon semi-circle">
+                            <input
+                                id="semi-circle"
+                                className="vis-hidden"
+                                type="checkbox"
+                                checked={activeFilter.includes("semi-circle")}
+                                onClick={() => this.onFilterChange("semi-circle")}
+                            />
+                            <label htmlFor="semi-circle">
+                                <img src={SemiCircle} alt="Semi Circle" />
+                            </label>
+                        </div>
+                        <p className="text-green">Semi Circle</p>
+                    </div>
                 </div>
             </div>
           </div>
           <div className="grid-products">
             <h2>Latest Products</h2>
-            <p className='text-green'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores</p>
+            <p className='text-green'>Discover our latest collection and find the accessories that most represent you!</p>
             <div className="four-cols">
                 {filteredList.map(item => {
                     const newSku = {
@@ -191,7 +265,7 @@ class Search extends React.Component {
                         price: item.node.unit_amount,
                         currency: item.node.currency,
                     }
-                    return <ProductWindow key={item.id} sku={newSku} slug={item.node.product.metadata.slug} />
+                    return <ProductWindow key={item.id} sku={newSku} slug={item.node.product.metadata.slug} productImage={item.node.product.images[0]} />
                 })}
             </div>
           </div>

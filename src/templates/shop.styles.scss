@@ -111,6 +111,14 @@
                 &.color-green {
                     background: $green;
                 }
+
+                &.color-beige {
+                    background: $beige;
+                }
+
+                &.color-yellow {
+                    background: #f4c430;
+                }
             }
         }
     }
@@ -119,8 +127,8 @@
         margin: 30px 0;
 
         .style-options {
-            display: flex;
-            justify-content: space-between;
+            // display: flex;
+            // justify-content: space-between;
 
             .vis-hidden {
                 position: absolute;
@@ -158,8 +166,11 @@
             }
             
             .style {
-                width: 60px;
+                width: 100%;
                 text-align: center;
+                display: flex;
+                align-items: center;
+                margin: 0 0 10px;
 
                 p {
                     text-align: center;
@@ -172,6 +183,7 @@
                     width: 60px;
                     height: 60px;
                     position: relative;
+                    margin: 0 20px 0 0;
 
                     img {
                         height: 50px;

@@ -24,6 +24,7 @@
         border-radius: 300px 300px 0 0;
         background: $beige;
         margin: auto;
+        background-size: cover;
 
         @media (min-width: $desktop) {
             height: 330px;
@@ -40,6 +41,7 @@
         margin: 10px 0;
 
         p {
+            text-align: left;
 
             &:nth-of-type(even) {
                 text-align: right;

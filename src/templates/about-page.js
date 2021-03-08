@@ -29,6 +29,7 @@ export const AboutPageTemplate = ({
       <PageContent className="page-content" content={content} />
       <TwoColImage
         twoColCopy={profileText}
+        twoColImage={profileImage.publicURL}
       />
       <ContactBlock />
     </div>
@@ -94,7 +95,9 @@ export const aboutPageQuery = graphql`
           introCopy
         }
         profile {
-          profileImage
+          profileImage {
+            publicURL
+          }
           profileText
         }
       }

@@ -31,6 +31,7 @@ export const shopQuery = graphql`
           id
           product {
             name
+            images
             metadata {
               slug
               style

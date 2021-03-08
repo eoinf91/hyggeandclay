@@ -19,7 +19,7 @@ const FourCols = ({ productData, productsTitle }) => {
                     price: price.unit_amount,
                     currency: price.currency,
                 }
-                return <ProductWindow key={price.id} sku={newSku} slug={price.product.metadata.slug} />
+                return <ProductWindow key={price.id} sku={newSku} slug={price.product.metadata.slug} productImage={price.product.images[0]} />
             })}
             </div>
             <Link to="/shop" className="cta">View Collection</Link>

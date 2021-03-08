@@ -3,7 +3,7 @@ import Circle from '../Circle/Circle'
 
 import './Header.styles.scss'
 
-import BGImage from '../../img/header_bg_template.jpg'
+import BGImage from '../../img/bg_option.jpg'
 import ArchImage from '../../img/header_arch_img.jpg'
 
 const Header = ({ headerTitle, headerCopy, productImage }) => {
@@ -11,7 +11,7 @@ const Header = ({ headerTitle, headerCopy, productImage }) => {
         <div
             className="header"
             style={{
-                'background': `url(${BGImage})`,
+                'background': `url(${BGImage}), linear-gradient(#d6ddd8, #d6ddd8)`,
                 'backgroundSize': 'cover',
                 'backgroundPosition': 'center left'
             }}

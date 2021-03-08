@@ -16,6 +16,7 @@ export const IndexPageTemplate = ({
   theData,
   aboutTitle,
   aboutContent,
+  aboutImage,
 }) => {
   return (
     <div>
@@ -31,6 +32,7 @@ export const IndexPageTemplate = ({
       <TwoColImage
         twoColHeader={aboutTitle}
         twoColCopy={aboutContent}
+        twoColImage={aboutImage.publicURL}
       />
       <ContactBlock />
     </div>
@@ -49,6 +51,7 @@ IndexPageTemplate.propTypes = {
   about: PropTypes.shape({
     aboutTitle: PropTypes.string.isRequired,
     aboutContent: PropTypes.string.isRequired,
+    aboutImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   }),
 }
 
@@ -64,6 +67,7 @@ const IndexPage = ({ data }) => {
         productsTitle={data.markdownRemark.frontmatter.products.productsTitle}
         aboutTitle={data.markdownRemark.frontmatter.about.aboutTitle}
         aboutContent={data.markdownRemark.frontmatter.about.aboutContent}
+        aboutImage={data.markdownRemark.frontmatter.about.aboutImage}
       />
     </Layout>
   )
@@ -99,6 +103,9 @@ export const pageQuery = graphql`
         about {
           aboutTitle
           aboutContent
+          aboutImage {
+            publicURL
+          }
         }
       }
     }
@@ -107,6 +114,7 @@ export const pageQuery = graphql`
         node {
           product {
             name
+            images
             metadata {
               slug
             }
